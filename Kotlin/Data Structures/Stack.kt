@@ -1,26 +1,26 @@
 class Stack(val size : Int) {
 	val innerArray : IntArray
 
-	var position = 0
+	var top = 0
 
 	init {
 		innerArray = IntArray(size)
 	}
 
 	fun put(item : Int) {
-		innerArray[position] = item
-		position++
+		innerArray[top] = item
+		top++
 	}
 
 	fun pop() : Int {
-		val item = innerArray[position-1]
-		innerArray[position-1] = 0
-		position--
+		val item = innerArray[top-1]
+		innerArray[top-1] = 0
+		top--
 		return item
 	}
 
 	fun peek() : Int {
-		return innerArray[position-1]
+		return innerArray[top-1]
 	}
 }
 
