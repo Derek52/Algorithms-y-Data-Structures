@@ -6,14 +6,19 @@ fun main() {
 	//print initialArray
 	println(array.joinToString(", "))
 
-	for (i in array.size - 1 downTo 2) {
-		for (j in 0..i-1) {
+	for (i in 0..array.size - 1) {
+		var smallestValue = array[i]
+		var smallestIndex = i
+		for (j in i..array.size - 1) {
 			val a = array[j]
-			val b = array[j+1]
-			if (a > b) {
-				swap(j, j+1)
-				swaps++
+			if (smallestValue > a) {
+				smallestIndex = j
+				smallestValue = array[j]
 			}
+		}
+		if ( i != smallestIndex) {
+			swap(i, smallestIndex)
+			swaps++
 		}
 	}
 
@@ -23,6 +28,7 @@ fun main() {
 }
 
 fun swap(a : Int, b : Int) {
+//	println("Swapping ${array[a]} and ${array[b]}")
 	val temp = array[a]
 	array[a] = array[b]
 	array[b] = temp

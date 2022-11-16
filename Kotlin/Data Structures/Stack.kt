@@ -18,6 +18,10 @@ class Stack(val size : Int) {
 		position--
 		return item
 	}
+
+	fun peek() : Int {
+		return innerArray[position-1]
+	}
 }
 
 fun main() {
