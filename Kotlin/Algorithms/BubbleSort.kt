@@ -1,5 +1,3 @@
-//import kotlin.random.Random
-
 val array = intArrayOf(77, 23, 11, 145, 7, 48, 17)
 
 var swaps = 0
