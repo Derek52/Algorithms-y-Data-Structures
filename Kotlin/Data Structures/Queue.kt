@@ -1,23 +1,23 @@
-class Queue(val maxSize: Int){
+class Queue<T>(val maxSize: Int){
 
 	var itemCount = 0
 	var front = 0
 	var rear = -1
 
-	val qArray = IntArray(maxSize)
+	val qList = mutableListOf<T>()
 
 
-	fun insert(item: Int) {
+	fun insert(item: T) {
 		if (rear == maxSize - 1) {
 			rear = -1
 		}
 		rear++
-		qArray[rear] = item
+		qList.add(rear, item)
 		itemCount++
 	}
 
-	fun remove() : Int {
-		val item = qArray[front]
+	fun remove() : T {
+		val item = qList[front]
 		front++
 		if (front == maxSize) {
 			front = 0
@@ -26,8 +26,8 @@ class Queue(val maxSize: Int){
 		return item
 	}
 
-	fun peek() : Int {
-		return qArray[front]
+	fun peek() : T {
+		return qList[front]
 	}
 
 	fun isFull() : Boolean {
@@ -53,7 +53,7 @@ class Queue(val maxSize: Int){
 }
 
 fun main() {
-	val queue = Queue(10)
+	val queue = Queue<Int>(10)
 
 	println("queue.isEmpty() should be true: is ${queue.isEmpty()}")
 	println("queue.isFull() should be false: is ${queue.isFull()}")
