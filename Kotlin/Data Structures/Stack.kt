@@ -1,28 +1,25 @@
-class Stack(val maxSize : Int) {
-	val innerArray : IntArray
+class Stack<T>(val maxSize : Int) {
 
 	var top = 0
 	var currentSize : Int = 0
 
-	init {
-		innerArray = IntArray(maxSize)
-	}
+	val innerArray = mutableListOf<T>()
 
-	fun put(item : Int) {
-		innerArray[top] = item
+	fun put(item : T) {
+		innerArray.add(top, item)
 		top++
 		currentSize++
 	}
 
-	fun pop() : Int {
+	fun pop() : T {
 		val item = innerArray[top-1]
-		innerArray[top-1] = 0
+		innerArray.removeAt(top - 1)
 		top--
 		currentSize--
 		return item
 	}
 
-	fun peek() : Int {
+	fun peek() : T {
 		return innerArray[top-1]
 	}
 
@@ -40,7 +37,7 @@ class Stack(val maxSize : Int) {
 }
 
 fun main() {
-	val stack = Stack(5)
+	val stack = Stack<Int>(5)
 	stack.put(16)
 	stack.put(25)
 	stack.put(36)
