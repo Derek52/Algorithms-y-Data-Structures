@@ -12,10 +12,9 @@ class StackTest {
         stack.put(9)
         stack.put(16)
         stack.put(25)
+        stack.peek().shouldBe(25)
         stack.put(36)
         stack.peek().shouldBe(36)
-        stack.pop()
-        stack.peek().shouldBe(25)
     }
 
     @Test
@@ -45,6 +44,7 @@ class StackTest {
     fun sizeTests() {
         val stack = Stack<Int>(5)
         stack.isEmpty().shouldBe(true)
+        stack.isFull().shouldBe(false)
         stack.put(4)
         stack.isEmpty().shouldBe(false)
         stack.isFull().shouldBe(false)
