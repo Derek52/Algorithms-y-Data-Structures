@@ -38,8 +38,8 @@ class LinkedListTest {
         linkedList.add(2)
         linkedList.add(3)
 
-        linkedList.currentNode!!.item.shouldBe(3)
+        linkedList.peek()!!.item.shouldBe(3)
         linkedList.remove(3)
-        linkedList.currentNode!!.item.shouldBe(2)
+        linkedList.peek()!!.item.shouldBe(2)
     }
 }

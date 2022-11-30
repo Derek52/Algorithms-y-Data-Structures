@@ -13,11 +13,11 @@ class DoublyLinkedListTest {
         val linkedList = DoublyLinkedList()
 
         linkedList.peekHead().shouldBe(null)
-        linkedList.add(1)
+        linkedList.addLast(1)
         linkedList.peekTail()!!.item.shouldBe(1)
-        linkedList.add(2)
+        linkedList.addLast(2)
         linkedList.peekTail()!!.item.shouldBe(2)
-        linkedList.add(3)
+        linkedList.addLast(3)
         linkedList.peekTail()!!.item.shouldBe(3)
     }
 
@@ -26,11 +26,11 @@ class DoublyLinkedListTest {
     fun removeTest() {
         val linkedList = DoublyLinkedList()
 
-        linkedList.add(2)
-        linkedList.add(4)
-        linkedList.add(8)
-        linkedList.add(16)
-        linkedList.add(32)
+        linkedList.addLast(2)
+        linkedList.addLast(4)
+        linkedList.addLast(8)
+        linkedList.addLast(16)
+        linkedList.addLast(32)
 
         val removed = linkedList.remove(8)
         removed.shouldBeTrue()
@@ -40,9 +40,9 @@ class DoublyLinkedListTest {
     fun removeHeadTest() {
         val linkedList = DoublyLinkedList()
 
-        linkedList.add(1)
+        linkedList.addLast(1)
         linkedList.peekHead()!!.item.shouldBe(1)
-        linkedList.add(2)
+        linkedList.addLast(2)
 
         linkedList.removeHead()
         linkedList.peekHead()!!.item.shouldBe(2)
@@ -52,9 +52,9 @@ class DoublyLinkedListTest {
     fun removeTailTest() {
         val linkedList = DoublyLinkedList()
 
-        linkedList.add(1)
-        linkedList.add(2)
-        linkedList.add(3)
+        linkedList.addLast(1)
+        linkedList.addLast(2)
+        linkedList.addLast(3)
         linkedList.removeTail()
         linkedList.peekTail()!!.item.shouldBe(2)
     }
@@ -63,11 +63,11 @@ class DoublyLinkedListTest {
     fun removeLastItemTest() {
         val linkedList = DoublyLinkedList()
 
-        linkedList.add(1)
-        linkedList.add(2)
-        linkedList.add(3)
+        linkedList.addFirst(1)
+        linkedList.addFirst(2)
+        linkedList.addFirst(3)
 
-        linkedList.tail!!.item.shouldBe(3)
+        linkedList.tail!!.item.shouldBe(1)
         linkedList.remove(3)
         linkedList.tail!!.item.shouldBe(2)
     }

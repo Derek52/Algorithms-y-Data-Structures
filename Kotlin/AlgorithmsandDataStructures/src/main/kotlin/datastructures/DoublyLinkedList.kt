@@ -5,18 +5,23 @@ class DoublyLinkedList {
     var head: DualNode? = null
     var tail: DualNode? = null
 
-    fun add(item : Int) {
-        if (head == null) {
-            head = DualNode(item)
-            tail = head
-            println("Adding to head")
-        } else {
-            val newNode = DualNode(item)
-            newNode.previous = tail
-            tail!!.next = newNode
+    fun addFirst(item : Int) {
+        val newNode = DualNode(item)
+        if (isEmpty()) {
             tail = newNode
-            println("Adding to currentNode")
         }
+        newNode.next = head
+        head = newNode
+    }
+
+    fun addLast(item: Int) {
+        val newNode = DualNode(item)
+        if (isEmpty()) {
+            head = newNode
+        } else {
+            tail!!.next = newNode
+        }
+        tail = newNode
     }
 
     fun peekHead() : DualNode? {
@@ -27,31 +32,28 @@ class DoublyLinkedList {
         return tail
     }
 
-    fun remove(item: Int) : Boolean{
-        head?.let {h ->
+    fun remove(item: Int) : Boolean {
+        head?.let { h ->
             var nodeToCheck = h
-            if (nodeToCheck.item == item) {
-                head = h.next
-                head!!.previous = null
-                return true
-            }
-            var previousNode = h
+            var previous = h
+
             while(nodeToCheck.next != null) {
+                println("In While loop")
                 if (nodeToCheck.item == item) {
-                    previousNode.next = nodeToCheck.next
-                    nodeToCheck.next!!.previous = previousNode
+                    if (nodeToCheck == h) {
+                        head = h.next
+                    } else if (nodeToCheck == tail) {
+                        tail = tail!!.previous
+                    } else {
+                        previous.next = nodeToCheck.next
+                        nodeToCheck.previous = previous
+                    }
                     return true
+                } else {
+                    previous = nodeToCheck
+                    nodeToCheck = nodeToCheck.next!!
                 }
-                previousNode = nodeToCheck
-                nodeToCheck = nodeToCheck.next!!
-
             }
-            if (nodeToCheck.item == item) {
-                tail = previousNode
-                tail!!.next = null
-                return true
-            }
-
         }
         return false
     }
@@ -62,11 +64,15 @@ class DoublyLinkedList {
     }
 
     fun removeTail() : DualNode? {
-        val previousNode = tail!!.previous
-        previousNode!!.next = null
-        val node = tail
-        tail = previousNode
-        return node
+        val old = tail
+        val node = tail!!.previous
+        node!!.next = null
+        tail = node
+        return old
+    }
+
+    fun isEmpty() : Boolean {
+        return head == null
     }
 }
 

@@ -3,48 +3,35 @@ package datastructures
 class LinkedList {
 
     var head: Node? = null
-    var currentNode: Node? = null
 
     fun add(item : Int) {
-        if (head == null) {
-            head = Node(item)
-            currentNode = head
-            println("Adding to head")
-        } else {
-            val newNode = Node(item)
-            currentNode!!.next = newNode
-            currentNode = newNode
-            println("Adding to currentNode")
-        }
+        val node = Node(item)
+        node.next = head
+        head = node
     }
 
     fun peek() : Node? {
-        return currentNode
+        return head
     }
 
     fun remove(item: Int) : Boolean{
         head?.let {h ->
             var nodeToCheck = h
-            if (nodeToCheck.item == item) {
-                head = h.next
-                return true
-            }
-            var previousNode = h
+            var previous = h
+
             while(nodeToCheck.next != null) {
                 if (nodeToCheck.item == item) {
-                    previousNode.next = nodeToCheck.next
+                    if (nodeToCheck == h) {
+                        head = h.next
+                    } else {
+                        previous.next = nodeToCheck.next
+                    }
                     return true
+                } else {
+                    previous = nodeToCheck
+                    nodeToCheck = nodeToCheck.next!!
                 }
-                previousNode = nodeToCheck
-                nodeToCheck = nodeToCheck.next!!
-
             }
-            if (nodeToCheck.item == item) {
-                currentNode = previousNode
-                currentNode!!.next = null
-                return true
-            }
-
         }
         return false
     }
