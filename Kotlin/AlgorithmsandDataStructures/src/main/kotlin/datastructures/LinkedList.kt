@@ -35,6 +35,39 @@ class LinkedList {
         }
         return false
     }
+
+    fun printList() {
+        head?.let {
+            var currentNode = head
+            var count = 0
+            while(currentNode != null) {
+                println("$count = ${currentNode.item}")
+                currentNode = currentNode.next
+                count++
+            }
+        }
+    }
+
+    fun printListReversed(node: Node?) {
+        if (node == null) {
+            return
+        }
+        printListReversed(node.next)
+        println(node.item)
+    }
+
+    fun reverse(node: Node) {
+        if (node.next == null) {
+            head = node
+            return
+        }
+        //val newHead : Node? = reverse(node.next!!)!!
+        reverse(node.next!!)
+        node.next!!.next = node
+        node.next = null
+        //return newHead
+    }
+
 }
 
-class Node(val item: Int, var next: Node? = null)
+data class Node(val item: Int, var next: Node? = null)
