@@ -12,6 +12,8 @@ class QueueTest {
         queue.insert(9)
         queue.insert(16)
         queue.peek().shouldBe(4)
+        queue.remove()
+        queue.peek().shouldBe(9)
     }
 
     @Test
