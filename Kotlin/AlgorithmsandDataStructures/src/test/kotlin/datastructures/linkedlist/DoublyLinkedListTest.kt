@@ -1,8 +1,7 @@
-package datastructures
+package datastructures.linkedlist
 
-import io.kotest.matchers.booleans.shouldBeFalse
+import datastructures.linkedlist.DoublyLinkedList
 import io.kotest.matchers.booleans.shouldBeTrue
-import io.kotest.matchers.should
 import io.kotest.matchers.shouldBe
 import org.junit.jupiter.api.Test
 

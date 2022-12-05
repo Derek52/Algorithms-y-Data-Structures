@@ -1,6 +1,5 @@
-package datastructures
+package datastructures.linkedlist
 
-import algorithms.datastructure.LinkedListAlgs
 import io.kotest.matchers.shouldBe
 import org.junit.jupiter.api.Test
 
@@ -74,4 +73,17 @@ class LinkedListTest {
             currentTestNode = currentTestNode.next
         }
     }
+
+    @Test
+    fun bigReverseTest() {
+        val linkedList = LinkedList()
+
+        for (i in 1..5000) {
+            linkedList.add(i)
+        }
+
+        linkedList.reverse(linkedList.head!!)
+    }
+
+
 }
