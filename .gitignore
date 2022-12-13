@@ -6,3 +6,5 @@ build/
 .gradle/
 
 java_pid*
+
+D/out/
