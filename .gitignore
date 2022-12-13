@@ -8,3 +8,5 @@ build/
 java_pid*
 
 D/out/
+
+Rust/target/*
