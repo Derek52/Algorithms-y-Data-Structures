@@ -88,6 +88,29 @@ class BinaryTree {
         }
     }
 
+    fun printTree(node: BinaryNode) {
+        print(" ${node.value} ")
+        if (node.leftChild == null && node.rightChild == null) {
+            return
+        }
+
+        if (node.leftChild == null) {
+            printTree(node.rightChild!!)
+            return
+        }
+
+        if (node.rightChild == null) {
+            printTree(node.leftChild!!)
+            return
+        }
+        println()
+        print(" ${node.leftChild!!.value} ")
+        print(" ${node.rightChild!!.value} ")
+        printTree(node.leftChild!!)
+        printTree(node.rightChild!!)
+        println()
+    }
+
     fun clear() {
         root = null
     }

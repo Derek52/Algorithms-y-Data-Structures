@@ -27,8 +27,14 @@ class BinaryTreeTest {
         binaryTree.add(37)
         binaryTree.add(21)
         binaryTree.add(19)
+        binaryTree.add(81)
+        binaryTree.add(93)
+        binaryTree.add(11245)
+        binaryTree.add(190)
 
-
+        binaryTree.root?.let {
+            binaryTree.printTree(it)
+        }
 
     }
 }
